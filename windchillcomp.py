@@ -6,10 +6,10 @@ types = {'tempout': float, 'windspeed': float, 'windchill':float}
 
 # Initialize my data variable
 data = {}
-#for column in columns:
-#    data[column] = []
-# Read the datafile
+for column in columns:
+    data[column] = []
 
+# Read the datafile
 filename = "data/wxobs20170821.txt"
 
 with open(filename, 'r') as datafile:
@@ -27,6 +27,7 @@ with open(filename, 'r') as datafile:
             i = columns[column]
             t = types.get(column, str)
             value = t(split_line[i])
+            data[column].append(value)
 
 # Compute the windchill temperature
 def compute_windchill(t, v):
@@ -56,4 +57,4 @@ print('------- ------ --------- --------- ----------')
 zip_data = zip(data['date'],data['time'],data['windchill'],windchill)
 for date, time, wc_orig, wc_comp in zip_data:
     wc_diff = wc_orig - wc_comp
-    print(f{date} {time:>6} {wc_orig:9.6f} {wc_comp:9.6f} {wc_diff:10.6f}')
+    print(f'{date} {time:>6} {wc_orig:9.6f} {wc_comp:9.6f} {wc_diff:10.6f}')
