@@ -61,16 +61,16 @@ def compute_dewpoint(t,h):
         h: the relative humidity in units of % (float)
     """
 
-     tempC  (t - 32)* 5/9  #convert temperature from deg F to deg C
-     rh = h/100
+    tempC=  (t - 32)* 5/9  #convert temperature from deg F to deg C
+    rh = h/100
 
-     b = 18.678  # unitless
-     c = 257.14  # deg C
+    b = 18.678  # unitless
+    c = 257.14  # deg C
 
-     gamma = math.log(rh) + (b * tempC) /(c + tempC)
+    gamma = math.log(rh) + (b * tempC) /(c + tempC)
 
-     tdp = c * gamma/(b - gamma)
+    tdp = c * gamma/(b - gamma)
 
-     tdp_F = 9/5* tdp + 32  $ convert from C to F
+    tdp_F = 9/5* tdp + 32  # convert from C to F
 
-     return tdp_F
+    return tdp_F

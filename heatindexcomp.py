@@ -15,4 +15,4 @@ data = read_data(columns,types=types)
 heat_index=[compute_heatindex(t,h) for t,h in zip(data['tempout'],data['humout'])]
 
 #OUTPUT comparison of data
-print_comparison('WINDCHILL',data['date'],data['time'],data['heatindex'],heatindex)
+print_comparison('HEAT INDEX',data['date'],data['time'],data['heatindex'],heatindex)
